@@ -8,12 +8,14 @@ import Login from "./pages/Login/Login.jsx";
 import OrderHistory from "./pages/OrderHistory/OrderHistory.jsx";
 import NotFound from "./pages/NotFound/NotFound.jsx";
 import Explore from "./pages/Explore/Explore.jsx";
+import {Toaster} from "react-hot-toast";
 
 function App() {
 
   return (
     <div>
       <Menubar/>
+        <Toaster/>
         <Routes>
             <Route path = "/dashboard" element ={<Dashboard />}/>
             <Route path = "/category" element ={<ManageCategory />}/>
