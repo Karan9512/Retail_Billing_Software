@@ -67,25 +67,25 @@ const CategoryForm = () => {
                             <div className="mb-3">
                                 <label htmlFor="name" className="form-label">Name</label>
                                 <input type="text"
-                                       name="name"
-                                       id="name"
-                                       className="form-control"
-                                       placeholder="Category Name"
-                                       onChange={onChangeHandler}
-                                       value={data.name}
-                                       required
+                                    name="name"
+                                    id="name"
+                                    className="form-control"
+                                    placeholder="Category Name"
+                                    onChange={onChangeHandler}
+                                    value={data.name}
+                                    required
                                 />
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="description" className="form-label">Description</label>
                                 <textarea
-                                    rows="5"
-                                    name="description"
-                                    id="description"
-                                    className="form-control"
-                                    placeholder="Write content here.."
-                                    onChange={onChangeHandler}
-                                    value={data.description}
+                                        rows="5"
+                                       name="description"
+                                       id="description"
+                                       className="form-control"
+                                       placeholder="Write content here.."
+                                        onChange={onChangeHandler}
+                                        value={data.description}
                                 ></textarea>
                             </div>
                             <div className="mb-3">

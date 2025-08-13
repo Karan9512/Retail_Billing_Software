@@ -2,9 +2,10 @@ import {createContext, useEffect, useState} from "react";
 import {fetchCategories} from "../Service/CategoryService.js";
 import {fetchItems} from "../Service/ItemService.js";
 
-const AppContext = createContext(null);
+// eslint-disable-next-line react-refresh/only-export-components
+export const AppContext = createContext(null);
 
-const AppContextProvider = (props) => {
+export const AppContextProvider = (props) => {
 
     const [categories, setCategories] = useState([]);
     const [itemsData, setItemsData] = useState([]);
@@ -29,22 +30,32 @@ const AppContextProvider = (props) => {
     }
 
     useEffect(() => {
-        async function loadData() {
+    async function loadData() {
+        try {
             if (localStorage.getItem("token") && localStorage.getItem("role")) {
                 setAuthData(
                     localStorage.getItem("token"),
                     localStorage.getItem("role")
                 );
             }
+
             const response = await fetchCategories();
             const itemResponse = await fetchItems();
             console.log('item response', itemResponse);
             setCategories(response.data);
             setItemsData(itemResponse.data);
 
+            console.log('item response', itemResponse);
+            setCategories(response.data);
+            setItemsData(itemResponse.data);
+        } catch (error) {
+            console.error("Error loading data:", error);
+            // Optionally set error state or show a message to the user
         }
-        loadData();
-    }, []);
+    }
+    loadData();
+}, []);
+
 
     const setAuthData = (token, role) => {
         setAuth({token, role});
@@ -72,5 +83,3 @@ const AppContextProvider = (props) => {
         {props.children}
     </AppContext.Provider>
 }
-
-export {AppContext,AppContextProvider};

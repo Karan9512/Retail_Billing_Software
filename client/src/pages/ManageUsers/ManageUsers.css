@@ -1,4 +1,4 @@
-.users-container {
+.users-container{
     display: flex;
     gap: 20px;
     padding: 20px;
@@ -7,7 +7,7 @@
     background-color: #2C3335;
 }
 
-.left-column {
+.left-column{
     flex: 0.7;
     border: 1px solid #ccc;
     border-radius: 8px;
@@ -18,7 +18,7 @@
     flex-direction: column;
 }
 
-.right-column {
+.right-column{
     flex: 0.3;
     border: 1px solid #ccc;
     border-radius: 8px;

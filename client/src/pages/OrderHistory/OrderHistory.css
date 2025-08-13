@@ -1,0 +1,201 @@
+/* --- OrderHistory.css --- */
+.orders-history-container {
+    /* Theme variables for easy tuning */
+    --bg-card: #2c3335;
+    --bg-dark: #343a40;
+    --muted: #adb5bd;
+    --text: #f8f9fa;
+    --accent: #20c997;
+
+    padding: 2rem;
+    background-color: var(--bg-card);
+    color: var(--text);
+    min-height: 100vh;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+/* Date Filter Label */
+.orders-history-container label {
+    font-weight: 500;
+    color: var(--text);
+}
+
+/* Date Filter Row Fix - keep same line */
+.orders-history-container .row.mb-3 {
+    gap: 1rem;
+    display: flex;
+    flex-wrap: nowrap; /* prevent wrapping to second line */
+    align-items: end; /* align buttons with datepickers */
+}
+
+/* DatePicker column fix */
+.orders-history-container .row.mb-3 > .col-md-3,
+.orders-history-container .row.mb-3 > .col-md-6 {
+    flex: 0 0 auto;
+}
+
+/* Buttons in same row */
+.orders-history-container .filter-buttons {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+/* Fix datepicker width */
+.react-datepicker-wrapper,
+.react-datepicker__input-container input {
+    width: 100%;
+}
+
+.react-datepicker-wrapper {
+    flex: 0 0 auto;
+}
+
+/* Ensure datepicker popup shows above table */
+.react-datepicker-popper {
+    z-index: 1050 !important;
+}
+
+/* Scrollable Table Wrapper */
+.scrollable-table {
+    max-height: 500px;
+    overflow-y: auto;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 5px;
+}
+
+/* Sticky Table Headers */
+.table thead th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: var(--bg-dark);
+    color: var(--text);
+    text-align: center;
+}
+
+/* Table Cells */
+.table td, .table th {
+    vertical-align: middle;
+    text-align: center;
+    padding: 12px;
+    font-size: 0.95rem;
+    color: var(--text);
+}
+
+/* Left-align customer column */
+.table td:nth-child(2) {
+    text-align: left;
+}
+
+/* Payment status badge styles */
+.badge.bg-success {
+    background-color: #28a745 !important;
+}
+
+.badge.bg-warning.text-dark {
+    background-color: #ffc107 !important;
+    color: #212529 !important;
+}
+
+/* Button Styles (targeted to filter area only) */
+.orders-history-container .row.mb-3 .btn {
+    min-width: 110px;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+/* Pagination Styles -- small, high-contrast for dark theme */
+.pagination .btn {
+    border-radius: 6px;
+    padding: 6px 10px;
+    font-weight: 500;
+    margin: 0 4px;
+    min-width: 40px;
+    color: var(--text);
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.06);
+}
+
+/* Prev/Next nav buttons */
+.btn-nav {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+}
+
+.btn-nav:hover {
+    background-color: #5a6268;
+}
+
+/* Active page */
+.btn-active {
+    background-color: var(--accent);
+    color: #212529; /* dark text on accent for contrast */
+    font-weight: 700;
+    border: 1px solid rgba(0,0,0,0.12);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.25);
+}
+
+/* Inactive page */
+.btn-inactive {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid rgba(255,255,255,0.04);
+}
+
+.btn-inactive:hover {
+    background: rgba(255,255,255,0.03);
+    color: var(--text);
+}
+
+/* Disabled states */
+.pagination .btn:disabled,
+.btn-nav:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Focus states for keyboard accessibility */
+.pagination .btn:focus {
+    outline: 3px solid rgba(32,201,151,0.18);
+    outline-offset: 2px;
+}
+
+/* RESPONSIVE FIXES */
+@media (max-width: 991px) {
+    .orders-history-container .row.mb-3 {
+        flex-wrap: wrap;
+    }
+    .orders-history-container .filter-buttons {
+        width: 100%;
+        justify-content: center;
+        margin-top: 0.5rem;
+    }
+    .row .btn {
+        width: 100%;
+        justify-content: center;
+    }
+    .pagination .btn {
+        padding: 6px 8px;
+        font-size: 0.85rem;
+        min-width: 36px;
+    }
+}
+
+/* Optional: Styled scrollbar */
+.scrollable-table::-webkit-scrollbar {
+    height: 6px;
+    width: 6px;
+}
+
+.scrollable-table::-webkit-scrollbar-thumb {
+    background-color: rgba(255,255,255,0.1);
+    border-radius: 4px;
+}
+
+.scrollable-table::-webkit-scrollbar-track {
+    background: transparent;
+}
