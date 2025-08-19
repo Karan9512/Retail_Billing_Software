@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  backend:
+    image: karanchile01/billing-software-backend:latest  
+    ports:
+      - "8080:8080"
+    environment:
+      - DB_URL=jdbc:mysql://db:3306/billing_app?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+      - DB_USERNAME=root
+      - DB_PASSWORD=Karan@2733
+      - SPRING_JPA_DDL_AUTO=update
+      - SPRING_DATASOURCE_HIKARI_CONNECTION-TIMEOUT=60000
+      - SPRING_DATASOURCE_HIKARI_INITIALIZATION-FAIL-TIMEOUT=60000
+    depends_on:
+      db:
+        condition: service_healthy
+
+  frontend:
+    image: karanchile01/billing-software-frontend:latest 
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: Karan@2733
+      MYSQL_DATABASE: billing_app
+    volumes:
+      - mysql_data:/var/lib/mysql
+    ports:
+      - "3307:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-pPavan@1710"]
+      interval: 5s
+      timeout: 10s
+      retries: 10
+
+volumes:
+  mysql_data:
