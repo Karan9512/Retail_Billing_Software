@@ -21,18 +21,18 @@ push on the docker hub and then use image
 
 cd billingsoftware
 
-docker build -t shanthi1710/billing-software-backend:latest .
+docker build -t karanchile01/billing-software-backend:latest .
 
 cd client
 
-docker build -t shanthi1710/billing-software-frontend:latest .
+docker build -t karanchile01/billing-software-frontend:latest .
 
-docker login -u shanthi1710
+docker login -u karanchile01
 
 
-docker push shanthi1710/billing-software-backend:latest
+docker push karanchile01/billing-software-backend:latest
 
-docker push shanthi1710/billing-software-frontend:latest
+docker push karanchile01/billing-software-frontend:latest
 
 docker-compose down -v  
 
